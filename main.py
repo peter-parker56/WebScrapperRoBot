@@ -1,7 +1,3 @@
-# © SLBotsOfficial ™
-# © TR-TECH-GUIDE
-# 2021
-
 import os
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
@@ -9,16 +5,23 @@ from bs4 import BeautifulSoup
 import requests
 from telegraph.api import Telegraph
 from script import script
-
+# Define your proxy settings
+proxy = {
+    "hostname": "0.0.0.0",  # Proxy host
+    "port": 8080,           # Proxy port
+    "protocol": "http",     # or "socks5" depending on your proxy type
+    # "username": "user",   # Optional: replace with your proxy username
+    # "password": "pass"    # Optional: replace with your proxy password
+}
 SLBotsOfficial = Client(
     "WebScrapperBot",
     bot_token=os.environ["BOT_TOKEN"],
     api_id=int(os.environ["API_ID"]),
-    api_hash=os.environ["API_HASH"]
+    api_hash=os.environ["API_HASH"],
+    proxy=proxy  # Add the proxy parameter here
 )
-telegraph = Telegraph(
-    access_token=os.environ.get("TELEGRAPH_TOKEN", "dbc6169e9c7b4871fd681d87c80f5f5371fd59bff01dc95eca546cdb41a1")
-)
+
+telegraph = Telegraph(access_token=os.environ.get("TELEGRAPH_TOKEN", "dbc6169e9c7b4871fd681d87c80f5f5371fd59bff01dc95eca546cdb41a1"))
 
 @SLBotsOfficial.on_message(filters.command(["start"]) & filters.private)
 async def start(client, message):
