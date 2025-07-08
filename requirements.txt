@@ -1,6 +1,6 @@
-pyrogram
-tgcrypto
-requests
-beautifulsoup4
-html5lib
-telegraph
+pyrogram==1.4.16
+tgcrypto==1.2.7
+requests==2.26.0
+beautifulsoup4==4.10.0
+html5lib==1.1
+telegraph==0.1.0
